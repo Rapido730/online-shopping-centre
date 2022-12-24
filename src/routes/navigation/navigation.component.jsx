@@ -2,8 +2,21 @@ import { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./navigation.style.scss";
 import { ReactComponent as AppLogo } from "../../assests/logo.svg";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
+import { SignOutUser } from "../../utils/firebase.util";
+import CartIcon from "../../component/cart-icon/cart-icon.component"
+import CartDropdown from "../../component/cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../contexts/cart.context";
+
 
 const Navigation = () => {
+  const { CurrentUser} = useContext(UserContext);
+  const {IsCartOpen} = useContext(CartContext);
+
+  // console.log(CurrentUser);
+
+
   return (
     <Fragment>
       <div className="navigation">
@@ -14,10 +27,20 @@ const Navigation = () => {
           <Link className="nav-link" to="/shop">
             Shop
           </Link>
-          <Link className="nav-link" to="/signin">
-            Sign In
-          </Link>
-        </div>
+          
+            {CurrentUser ? (
+              <Link className="nav-link" to="/signin" onClick={SignOutUser}>
+                SignOut
+              </Link>
+            ) : (
+              <Link className="nav-link" to="/signin">
+                Sign In
+              </Link>
+            )}
+        
+          <CartIcon/>
+          </div>
+          {IsCartOpen && <CartDropdown/>}
       </div>
       <div>
         <Outlet />
