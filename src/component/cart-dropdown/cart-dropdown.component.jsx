@@ -10,13 +10,14 @@ import { CartContext } from "../../contexts/cart.context";
 
 const CartDropdown = () => {
     const {cartItems} = useContext(CartContext);
-    console.log(cartItems)
+    // console.log(cartItems)
 
     return (
       <div className="cart-dropdown-container">
         <div className="cart-items">
           {cartItems.map((item) => (
-            <CartItem cartItem={item} />
+            <CartItem  cartItem={item} />
+          
           ))}
         </div>
 
