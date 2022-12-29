@@ -1,4 +1,5 @@
-import {createAction} from "../../utils/reducer/reducer.utils"
-import { Category_Action_Types } from "./category.types"
+import { createAction } from "../../utils/reducer/reducer.utils";
+import { Category_Action_Types } from "./category.types";
 
-export const SetCategoryMap = (categoryMap)=> createAction(Category_Action_Types.SetCategoryMap,categoryMap);
+export const SetCategories = (categoriesArray) =>
+  createAction(Category_Action_Types.SetCategories, categoriesArray);

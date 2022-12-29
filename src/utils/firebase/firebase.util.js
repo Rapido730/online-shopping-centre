@@ -19,7 +19,7 @@ import {
   collection,
   writeBatch,
   query,
-  getDocs
+  getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -45,35 +45,36 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 
 export const db = getFirestore();
 
-export const addCollectionAndDocuments = (collectionKey,objectsToAdd) => {
-    const collectionRef = collection(db,collectionKey);
-    const batch = writeBatch(db);
+export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
 
-    objectsToAdd.forEach(object => {
-      const docRef =  doc(collectionRef,object.title.toLowerCase());
-      batch.set(docRef,object);
-    });
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
 
-    batch.commit();
-    console.log("done");
-} 
+  batch.commit();
+  console.log("done");
+};
 
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
 
-export const getCategoriesAndDocuments = async() => {
-    const collectionRef = collection(db,'categories');
-    const q = query(collectionRef);
+  const querySnapshot = await getDocs(q);
+  // console.log(querySnapshot);
 
-    const querySnapshot = await getDocs(q);
-    // console.log(querySnapshot);
+  // const categoryMap = querySnapshot.docs.reduce((acc, docSnapShot) => {
+  //   const { title, items } = docSnapShot.data();
+  //   acc[title.toLowerCase()] = items;
+  //   return acc;
+  // }, {});
 
-    const categoryMap = querySnapshot.docs.reduce((acc,docSnapShot)=>{
-      const {title,items} = docSnapShot.data();
-      acc[title.toLowerCase()]=items;
-      return acc;
-    }, {})
+  return querySnapshot.docs.map((doc)=>doc.data());
 
-    return categoryMap;
-}
+  // return categoryMap;
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,

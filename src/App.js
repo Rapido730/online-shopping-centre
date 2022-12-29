@@ -1,6 +1,6 @@
 import Home from "./routes/home/home.component";
 
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { SetCurrentUser } from "./store/user/user.action";
@@ -8,7 +8,7 @@ import { SetCurrentUser } from "./store/user/user.action";
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
-} from "./utils/firebase.util";
+} from "./utils/firebase/firebase.util";
 
 import { Route, Routes } from "react-router-dom";
 import Navigation from "./routes/navigation/navigation.component.jsx";
@@ -27,13 +27,13 @@ const App = () => {
       }
       dispatch(SetCurrentUser(user));
       // console.log(CurrentUser)
-      // console.log(user); 
+      // console.log(user);
       // it will return a unsubsribe function which will shutdown this listner
     });
 
     return unsubscribe;
   }, []);
-    
+
   return (
     <div>
       <Routes>

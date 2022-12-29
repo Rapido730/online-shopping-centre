@@ -7,7 +7,7 @@ import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
   SignInAuthUserWithEmailandPassword,
-} from "../../utils/firebase.util";
+} from "../../utils/firebase/firebase.util";
 const defaultFormValue = {
   email: "",
   password: "",
@@ -16,7 +16,6 @@ const defaultFormValue = {
 const SigninForm = () => {
   const [FormValue, SetFormValue] = useState(defaultFormValue);
   const { email, password } = FormValue;
-
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -31,7 +30,6 @@ const SigninForm = () => {
         password
       );
 
-   
       //   console.log(user);
     } catch (error) {
       switch (error.code) {
@@ -52,7 +50,6 @@ const SigninForm = () => {
   const signInWithGoogle = async () => {
     // console.log("google");
     await signInWithGooglePopup();
-    
   };
 
   return (
