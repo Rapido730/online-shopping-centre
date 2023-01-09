@@ -4,11 +4,11 @@ import CartItem from "../cart-item/cart-item.component";
 
 import { Link } from "react-router-dom";
 
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
+// need to edit
+import { useSelector } from "react-redux";
 
 const CartDropdown = () => {
-  const { cartItems } = useContext(CartContext);
+  const  cartItems  = useSelector((state)=>state.cart.cartItems);
   // //console.log(cartItems)
 
   return (

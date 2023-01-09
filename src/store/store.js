@@ -10,13 +10,13 @@ const ReduxLogger = (store) => (next) => (action) => {
     next();
   }
 
-  // console.log("action type" , action.type);
+  // console.log("action type", action.type);
   // console.log("action payload", action.payload);
   // console.log("current state", store.getState());
 
   next(action);
 
-  // console.log("next state" , store.getState());
+  // console.log("next state", store.getState());
 };
 
 const middleWares = [ReduxLogger];

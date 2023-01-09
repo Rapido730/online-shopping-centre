@@ -9,13 +9,13 @@ import { SelectCurrentUser } from "../../store/user/user.selector";
 import { SignOutUser } from "../../utils/firebase/firebase.util";
 import CartIcon from "../../component/cart-icon/cart-icon.component";
 import CartDropdown from "../../component/cart-dropdown/cart-dropdown.component";
-import { CartContext } from "../../contexts/cart.context";
+// need to edit
 
 const Navigation = () => {
   // const { CurrentUser} = useContext(UserContext);
   const CurrentUser = useSelector(SelectCurrentUser);
   // console.log("navigation")
-  const { IsCartOpen } = useContext(CartContext);
+  const IsCartOpen = useSelector((state) => state.cart.IsCartOpen);
 
   // console.log(CurrentUser);
 
@@ -43,7 +43,7 @@ const Navigation = () => {
           <CartIcon />
         </div>
         {IsCartOpen && <CartDropdown />}
-        </div>
+      </div>
       <div>
         <Outlet />
       </div>

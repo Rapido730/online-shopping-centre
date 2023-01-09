@@ -1,19 +1,21 @@
 import "./product-card.style.scss";
 
 import Button from "../button/button.component";
+import { addItemToCart } from "../../store/cart/cart.action";
 
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
+// need to edit
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductCard = ({ product }) => {
-  const { cartItems, addItemToCart } = useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
 
   const { name, price, imageUrl } = product;
   // //console.log(cartItems)
 
   const ItemHandler = (event) => {
     // //console.log(event)
-    addItemToCart(product);
+    dispatch(addItemToCart(product, cartItems));
     // //console.log("clicked")
   };
 
