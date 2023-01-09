@@ -26,8 +26,8 @@ const App = () => {
         await createUserDocumentFromAuth(user);
       }
       dispatch(SetCurrentUser(user));
-      // console.log(CurrentUser)
-      // console.log(user);
+      // //console.log(CurrentUser)
+      // //console.log(user);
       // it will return a unsubsribe function which will shutdown this listner
     });
 

@@ -30,7 +30,7 @@ const SigninForm = () => {
         password
       );
 
-      //   console.log(user);
+      //   //console.log(user);
     } catch (error) {
       switch (error.code) {
         case "auth/user-not-found":
@@ -40,15 +40,15 @@ const SigninForm = () => {
           alert("Incorrect Password!");
           break;
         default:
-          console.log(error);
+        //console.log(error);
       }
     }
   };
 
-  // console.log(FormValue);
+  // //console.log(FormValue);
 
   const signInWithGoogle = async () => {
-    // console.log("google");
+    // //console.log("google");
     await signInWithGooglePopup();
   };
 

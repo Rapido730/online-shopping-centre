@@ -35,9 +35,9 @@ const Cart_action_types = {
 };
 
 const CartReducer = (state, action) => {
-  console.log("dispatched");
+  //console.log("dispatched");
   const { type, payload } = action;
-  console.log(type);
+  //console.log(type);
 
   switch (type) {
     case Cart_action_types.SetCartOpen:
@@ -68,7 +68,7 @@ export const CartProvider = ({ children }) => {
 
   const { IsCartOpen, cartItems, TotalCartQuantity, TotalCartPrice } = state;
   const SetCartOpen = () => {
-    dispatch({ type: Cart_action_types.SetCartOpen,payload:!IsCartOpen });
+    dispatch({ type: Cart_action_types.SetCartOpen, payload: !IsCartOpen });
   };
 
   const UpdateCartItemReducer = (newCartItems) => {

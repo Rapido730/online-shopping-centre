@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const Category = () => {
   const { category } = useParams();
-  console.log(category);
+  //console.log(category);
 
   const CategoryMap = useSelector(SelectCategoryMap);
   // const { CategoryMap } = useContext(CategoriesContext);

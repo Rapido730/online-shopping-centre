@@ -55,7 +55,7 @@ export const addCollectionAndDocuments = (collectionKey, objectsToAdd) => {
   });
 
   batch.commit();
-  console.log("done");
+  //console.log("done");
 };
 
 export const getCategoriesAndDocuments = async () => {
@@ -63,7 +63,7 @@ export const getCategoriesAndDocuments = async () => {
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  // console.log(querySnapshot);
+  // //console.log(querySnapshot);
 
   // const categoryMap = querySnapshot.docs.reduce((acc, docSnapShot) => {
   //   const { title, items } = docSnapShot.data();
@@ -71,7 +71,7 @@ export const getCategoriesAndDocuments = async () => {
   //   return acc;
   // }, {});
 
-  return querySnapshot.docs.map((doc)=>doc.data());
+  return querySnapshot.docs.map((doc) => doc.data());
 
   // return categoryMap;
 };
@@ -83,7 +83,7 @@ export const createUserDocumentFromAuth = async (
   const userDocRef = await doc(db, "users", userAuth.uid);
 
   const userSnapshot = await getDoc(userDocRef);
-  // console.log(additionalInformation)
+  // //console.log(additionalInformation)
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -97,7 +97,7 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log("error in creating user", error.message);
+      //console.log("error in creating user", error.message);
     }
   }
   return userDocRef;

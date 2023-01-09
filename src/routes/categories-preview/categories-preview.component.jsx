@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 
 import { SelectCategoryMap } from "../../store/category/category.selector";
 
-// console.log("hello");
+// //console.log("hello");
 
 import CategoryPreview from "../../component/category-preview/category-preview.component";
 
 const CategoriesPreview = () => {
   const CategoryMap = useSelector(SelectCategoryMap);
-
+  //console.log("preview")
   // const { CategoryMap } = useContext(CategoriesContext);
 
   return (

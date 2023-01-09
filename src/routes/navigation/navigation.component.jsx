@@ -14,6 +14,7 @@ import { CartContext } from "../../contexts/cart.context";
 const Navigation = () => {
   // const { CurrentUser} = useContext(UserContext);
   const CurrentUser = useSelector(SelectCurrentUser);
+  // console.log("navigation")
   const { IsCartOpen } = useContext(CartContext);
 
   // console.log(CurrentUser);
@@ -42,7 +43,7 @@ const Navigation = () => {
           <CartIcon />
         </div>
         {IsCartOpen && <CartDropdown />}
-      </div>
+        </div>
       <div>
         <Outlet />
       </div>
