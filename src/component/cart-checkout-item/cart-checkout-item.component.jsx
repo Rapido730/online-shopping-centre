@@ -4,11 +4,13 @@ import {
   addItemToCart,
   removeItemFromCart,
 } from "../../store/cart/cart.action";
+
+import { selectCartItems } from "../../store/cart/cart.selector";
 import "./cart-checkout-item.style.scss";
 
 const CartCheckoutItem = ({ Product }) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector(selectCartItems);
 
   const increaseQuantity = () => {
     dispatch(addItemToCart(Product, cartItems));

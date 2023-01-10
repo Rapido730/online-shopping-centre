@@ -5,9 +5,10 @@ import { addItemToCart } from "../../store/cart/cart.action";
 
 // need to edit
 import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 const ProductCard = ({ product }) => {
-  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
 
   const { name, price, imageUrl } = product;

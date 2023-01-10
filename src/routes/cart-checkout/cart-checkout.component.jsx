@@ -4,9 +4,14 @@ import "./cart-checkout.style.scss";
 // need to edit
 import CartCheckoutItem from "../../component/cart-checkout-item/cart-checkout-item.component";
 import { useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectCartPrice,
+} from "../../store/cart/cart.selector";
 
 const CartCheckout = () => {
-  const { cartItems, TotalCartPrice } = useSelector((state) => state.cart);
+  const cartItems = useSelector(selectCartItems);
+  const TotalCartPrice = useSelector(selectCartPrice);
 
   return (
     <div className="checkout-container">

@@ -6,23 +6,6 @@ export const CartStateToggle = (SetCartOpen) => {
   return createAction(Cart_Action_Types.CartToggle, SetCartOpen);
 };
 
-export const UpdateCartItemReducer = (newCartItems) => {
-  const newCartQuantity = newCartItems.reduce(
-    (count, cartItem) => count + cartItem.quantity,
-    0
-  );
-  const newCartPrice = newCartItems.reduce(
-    (price, cartItem) => price + cartItem.quantity * cartItem.price,
-    0
-  );
-
-  return createAction(Cart_Action_Types.SetCartItems, {
-    cartItems: newCartItems,
-    TotalCartPrice: newCartPrice,
-    TotalCartQuantity: newCartQuantity,
-  });
-};
-
 const AddInCart = (ProductToAdd, cartItems) => {
   const exitingCartItem = cartItems.find(
     (cartItem) => cartItem.id === ProductToAdd.id
@@ -42,7 +25,7 @@ const AddInCart = (ProductToAdd, cartItems) => {
 // const cartItems = useSelector((state)=>state.cart.cartItems);
 export const addItemToCart = (ProductToAdd, cartItems) => {
   const newCartItems = AddInCart(ProductToAdd, cartItems);
-  return UpdateCartItemReducer(newCartItems);
+  return createAction(Cart_Action_Types.SetCartItems, newCartItems);
 };
 
 export const removeItemFromCart = (ProductToRemove, cartItems) => {
@@ -50,7 +33,7 @@ export const removeItemFromCart = (ProductToRemove, cartItems) => {
     (cartItem) => !(cartItem.id === ProductToRemove.id)
   );
 
-  return UpdateCartItemReducer(newCartItems);
+  return createAction(Cart_Action_Types.SetCartItems, newCartItems);
 };
 
 export const decreaseItemQuantity = (Product, cartItems) => {
@@ -63,5 +46,5 @@ export const decreaseItemQuantity = (Product, cartItems) => {
         ? { ...cartItem, quantity: cartItem.quantity - 1 }
         : cartItem
     );
-  return UpdateCartItemReducer(newCartItems);
+  return createAction(Cart_Action_Types.SetCartItems, newCartItems);
 };
