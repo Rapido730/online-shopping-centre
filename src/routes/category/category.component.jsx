@@ -12,7 +12,7 @@ const Category = () => {
   //console.log(category);
 
   const CategoryMap = useSelector(SelectCategoryMap);
-  // const { CategoryMap } = useContext(CategoriesContext);
+
   const [Products, SetProducts] = useState(CategoryMap[category]);
 
   useEffect(() => {

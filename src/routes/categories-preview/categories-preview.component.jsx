@@ -10,8 +10,7 @@ import CategoryPreview from "../../component/category-preview/category-preview.c
 
 const CategoriesPreview = () => {
   const CategoryMap = useSelector(SelectCategoryMap);
-  //console.log("preview")
-  // const { CategoryMap } = useContext(CategoriesContext);
+
 
   return (
     <Fragment>
