@@ -16,13 +16,22 @@ const CartIcon = () => {
 
   const TotalCartQuantity = useSelector(selectCartQuantity);
 
-  const toggle = () => {
-    dispatch(CartStateToggle(!IsCartOpen));
+  const dropDownOpen = () => {
+    dispatch(CartStateToggle(true));
+  };
+
+  const dropDownClose = () => {
+    dispatch(CartStateToggle(false));
   };
 
   return (
-    <div className="Cart-icon-container">
-      <ShoppingIcon className="shopping-icon" onClick={toggle} />
+    <div
+      className="Cart-icon-container"
+    
+      onMouseEnter={dropDownOpen}
+      onMouseLeave={dropDownClose}
+    >
+      <ShoppingIcon className="shopping-icon" />
       <span className="item-count">{TotalCartQuantity}</span>
     </div>
   );

@@ -1,18 +1,36 @@
 import "./cart-drop.style.scss";
 import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
-
+import { CartStateToggle } from "../../store/cart/cart.action";
 import { Link } from "react-router-dom";
 
 // need to edit
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectCartOpenStatus,
+} from "../../store/cart/cart.selector";
 
 const CartDropdown = () => {
-  const  cartItems  = useSelector((state)=>state.cart.cartItems);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const IsCartOpen = useSelector(selectCartOpenStatus);
   // //console.log(cartItems)
 
+  const dropDownOpen = () => {
+    dispatch(CartStateToggle(true));
+  };
+
+  const dropDownClose = () => {
+    dispatch(CartStateToggle(false));
+  };
+
   return (
-    <div className="cart-dropdown-container">
+    <div
+      className="cart-dropdown-container"
+      onMouseEnter={dropDownOpen}
+      onMouseLeave={dropDownClose}
+    >
       <div className="cart-items">
         {cartItems.map((item) => (
           <CartItem key={item.id} cartItem={item} />
