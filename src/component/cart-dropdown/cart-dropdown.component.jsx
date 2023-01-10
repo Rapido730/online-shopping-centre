@@ -6,15 +6,11 @@ import { Link } from "react-router-dom";
 
 // need to edit
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCartItems,
-  selectCartOpenStatus,
-} from "../../store/cart/cart.selector";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CartDropdown = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const IsCartOpen = useSelector(selectCartOpenStatus);
   // //console.log(cartItems)
 
   const dropDownOpen = () => {
